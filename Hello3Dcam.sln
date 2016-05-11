@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hello3Dcam", "Hello3Dcam\Hello3Dcam.vcxproj", "{34BBA17A-BA89-438D-8559-F39CBB8C62EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hello3Dcam", "Hello3Dcam\Hello3Dcam.vcxproj", "{7B8C064E-8732-4D61-8FCA-B25166E1C496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34BBA17A-BA89-438D-8559-F39CBB8C62EA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{34BBA17A-BA89-438D-8559-F39CBB8C62EA}.Debug|Win32.Build.0 = Debug|Win32
-		{34BBA17A-BA89-438D-8559-F39CBB8C62EA}.Release|Win32.ActiveCfg = Release|Win32
-		{34BBA17A-BA89-438D-8559-F39CBB8C62EA}.Release|Win32.Build.0 = Release|Win32
+		{7B8C064E-8732-4D61-8FCA-B25166E1C496}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7B8C064E-8732-4D61-8FCA-B25166E1C496}.Debug|Win32.Build.0 = Debug|Win32
+		{7B8C064E-8732-4D61-8FCA-B25166E1C496}.Release|Win32.ActiveCfg = Release|Win32
+		{7B8C064E-8732-4D61-8FCA-B25166E1C496}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
