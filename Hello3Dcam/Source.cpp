@@ -1,30 +1,39 @@
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <iostream>
+#include "opencv2/opencv.hpp"
 
 using namespace cv;
-using namespace std;
 
-int main(int argc, char** argv)
+int main(int, char**)
 {
-	if (argc != 2)
-	{
-		cout << " Usage: display_image ImageToLoadAndDisplay" << endl;
+	VideoCapture cap(4); // open the default camera
+	double a, b;
+	bool c;
+	VideoCapture cap2(1);
+	if (!cap.isOpened() || !cap2.isOpened())  // check if we succeeded
 		return -1;
-	}
 
-	Mat image;
-	image = imread(argv[1], IMREAD_COLOR); // Read the file
+	a = cap.get(CAP_PROP_FRAME_WIDTH);
+	b = cap2.get(CAP_PROP_FRAME_WIDTH);
+	c = cap.set(CAP_PROP_FRAME_WIDTH, 160);
+	c = cap2.set(CAP_PROP_FRAME_WIDTH, 160);
+	a = cap.get(CAP_PROP_FRAME_HEIGHT);
+	b = cap2.get(CAP_PROP_FRAME_HEIGHT);
+	c = cap.set(CAP_PROP_FRAME_HEIGHT, 120); 
+	c = cap2.set(CAP_PROP_FRAME_HEIGHT, 120);
 
-	if (!image.data) // Check for invalid input
+
+	std::cout << "\n" << a << "\n" << b << "\n" << c << "\n";
+
+	for (;;)
 	{
-		cout << "Could not open or find the image" << std::endl;
-		return -1;
+		Mat frame;
+		Mat frame2;
+		cap2 >> frame2;
+		imshow("Camera2", frame2);
+		cap >> frame2; // get a new frame from camera
+		imshow("Camera1", frame2);
+		if (waitKey(30) >= 0) break;
 	}
-
-	namedWindow("Display window", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Display window", image); // Show our image inside it.
-
-	waitKey(0); // Wait for a keystroke in the window
+	// the camera will be deinitialized automatically in VideoCapture destructor
 	return 0;
 }
+
