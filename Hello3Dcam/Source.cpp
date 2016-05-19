@@ -9,22 +9,22 @@ int main(int argc, char ** argv)
 {
 	videoInput::listDevices();		// get list of devices
 	videoInput * vi = new videoInput();   	//required class to manage all the cameras
-	vi->setupDevice(0);			// choose first device (device 0)
+	vi->setupDevice(1);			// choose first device (device 0)
 
-	vi->setupDevice(3);
+	vi->setupDevice(2);
 
 	static char * windowName = "videoInput Library Video Example"; // window name
 
 	// if all is OK with device 0
 
-	IplImage* img = cvCreateImage(cvSize(vi->getWidth(0), vi->getHeight(0)), 8, 3), *img2 = cvCreateImage(cvSize(vi->getWidth(3), vi->getHeight(3)), 8, 3);
+	IplImage* img = cvCreateImage(cvSize(vi->getWidth(1), vi->getHeight(1)), 8, 3), *img2 = cvCreateImage(cvSize(vi->getWidth(2), vi->getHeight(2)), 8, 3);
 
 	// create a window and an OpenCV image (assuming 8 bit, 3 channel image)
 
 	cvNamedWindow("Camera 1", 1);
 	cvNamedWindow("Camera 2", 1);
 
-	if (vi->isDeviceSetup(0) && vi->isDeviceSetup(3))
+	if (vi->isDeviceSetup(1) && vi->isDeviceSetup(2))
 	{
 
 
@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
 		{
 			// if we have a new frame on the camera buffer
 
-			if (vi->isFrameNew(0))
+			if (vi->isFrameNew(1))
 			{
 				// get the pixels from the image to the "imageData" of the OpenCV
 				// image (here we assign it's an 8-bit 3 channel image
@@ -43,7 +43,7 @@ int main(int argc, char ** argv)
 
 				// N.B. This is a data "copy", see getPixels() doc. for info.
 
-				vi->getPixels(0, (unsigned char*)img->imageData, false, true);
+				vi->getPixels(1, (unsigned char*)img->imageData, false, true);
 
 
 				// !!! DO ALL OpenCV IMAGE PROCESSING HERE USING img AS INPUT
@@ -64,7 +64,7 @@ int main(int argc, char ** argv)
 				}
 			}
 
-			if (vi->isFrameNew(3))
+			if (vi->isFrameNew(2))
 			{
 				// get the pixels from the image to the "imageData" of the OpenCV
 				// image (here we assign it's an 8-bit 3 channel image
@@ -73,7 +73,7 @@ int main(int argc, char ** argv)
 
 				// N.B. This is a data "copy", see getPixels() doc. for info.
 
-				vi->getPixels(3, (unsigned char*)img2->imageData, false, true);
+				vi->getPixels(2, (unsigned char*)img2->imageData, false, true);
 
 
 				// !!! DO ALL OpenCV IMAGE PROCESSING HERE USING img AS INPUT
@@ -103,8 +103,8 @@ int main(int argc, char ** argv)
 
 	// stop the video device
 
-	vi->stopDevice(0);
-	vi->stopDevice(3);
+	vi->stopDevice(1);
+	vi->stopDevice(2);
 
 	system("pause");
 
